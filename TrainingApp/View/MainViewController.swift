@@ -48,6 +48,21 @@ class MainViewController: UIViewController {
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.onDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+    }
+
+    @objc func onDidBecomeActive() {
+        reload()
+    }
+
     @IBAction func onReloadButtonClick() {
         reload()
     }
