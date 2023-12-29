@@ -82,6 +82,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GuE-ZW-XGj">
                                 <rect key="frame" x="207.33333333333334" y="614.66666666666663" width="76.333333333333343" height="35"/>
+                                <accessibility key="accessibilityConfiguration" identifier="MainView.reloadButton"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Reload"/>
                                 <connections>
@@ -103,8 +104,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="zkB-nz-1b5"/>
                     <connections>
-                        <outlet property="maxTemeratureView" destination="60n-2D-VGU" id="LWz-x0-Tyf"/>
-                        <outlet property="minTemeratureView" destination="gTh-ih-qGL" id="osQ-Ic-J5F"/>
+                        <outlet property="maxTemperatureView" destination="60n-2D-VGU" id="LWz-x0-Tyf"/>
+                        <outlet property="minTemperatureView" destination="gTh-ih-qGL" id="osQ-Ic-J5F"/>
                         <outlet property="weatherImageView" destination="Dyq-dx-D6d" id="ug1-gD-Fnk"/>
                     </connections>
                 </viewController>

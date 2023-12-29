@@ -3,13 +3,15 @@ import UIKit
 import YumemiWeather
 
 class MainViewController: UIViewController {
-    @IBOutlet private var weatherImageView: UIImageView!
-    @IBOutlet private var minTemeratureView: UILabel!
-    @IBOutlet private var maxTemeratureView: UILabel!
+    @IBOutlet var weatherImageView: UIImageView!
+    @IBOutlet var minTemperatureView: UILabel!
+    @IBOutlet var maxTemperatureView: UILabel!
 
-    private func setWeather(info: WeatherInfo) {
-        minTemeratureView.text = "\(info.min_temperature)"
-        maxTemeratureView.text = "\(info.max_temperature)"
+    var weatherService: IWeatherService = WeatherService()
+
+    func setWeather(info: WeatherInfo) {
+        minTemperatureView.text = "\(info.min_temperature)"
+        maxTemperatureView.text = "\(info.max_temperature)"
 
         switch info.weather_condition {
         case .sunny:
@@ -25,7 +27,7 @@ class MainViewController: UIViewController {
     }
 
     private func reload() {
-        switch (Result { try WeatherService().getWeatherList(GetWeatherListRequest(areas: ["Tokyo"], date: Date.now)) }) {
+        switch (Result { try weatherService.getWeatherList(GetWeatherListRequest(areas: ["Tokyo"], date: Date.now)) }) {
         case .success(let weatherList):
             let weather = weatherList.first!
             Logger().debug("Area: \(weather.area), Date: \(weather.info.date), Condition: \(weather.info.weather_condition.rawValue), Temperature: \(weather.info.min_temperature) C - \(weather.info.max_temperature) C")
