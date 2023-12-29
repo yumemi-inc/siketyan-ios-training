@@ -39,8 +39,9 @@ class WeatherService {
     typealias GetWeatherListResponse = WeatherList
 
     func getWeatherList(req: GetWeatherListRequest) throws -> GetWeatherListResponse {
-        let req = String(data: try encoder.encode(req), encoding: .utf8)!
-        let res = try YumemiWeather.fetchWeatherList(req)
-        return try decoder.decode(GetWeatherListResponse.self, from: res.data(using: .utf8)!)
+        return try decoder.decodeFromString(
+            GetWeatherListResponse.self,
+            from: try YumemiWeather.fetchWeatherList(try encoder.encodeToString(req))
+        )
     }
 }
