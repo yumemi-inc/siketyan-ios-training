@@ -11,17 +11,8 @@ import YumemiWeather
 
 class ViewController: UIViewController {
     @IBOutlet private var weatherImageView: UIImageView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    @IBAction func onReloadButtonClick() {
-        let weather = YumemiWeather.fetchWeatherCondition()
-
-        Logger().info("\(weather)")
-
+    
+    private func setWeather(weather: String) {
         switch weather {
         case "sunny":
             weatherImageView.image = UIImage(resource: .sunny)
@@ -35,5 +26,36 @@ class ViewController: UIViewController {
         default:
             Logger().error("Unknown weather condition.")
         }
+    }
+    
+    private func reload() {
+        switch (Result { try YumemiWeather.fetchWeatherCondition(at: "tokyo") }) {
+        case .success(let weather):
+            Logger().debug("\(weather)")
+            setWeather(weather: weather)
+
+        case .failure(let error):
+            Logger().error("\(error)")
+
+            let alert = UIAlertController(
+                title: "Error",
+                message: "An error occurred while fetching the weather condition.",
+                preferredStyle: .alert
+            )
+
+            alert.addAction(UIAlertAction(title: "Retry", style: .default) { _ in self.reload() })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+            present(alert, animated: true)
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+
+    @IBAction func onReloadButtonClick() {
+        reload()
     }
 }
