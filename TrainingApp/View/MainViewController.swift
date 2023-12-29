@@ -7,7 +7,7 @@ class MainViewController: UIViewController {
     @IBOutlet private var minTemeratureView: UILabel!
     @IBOutlet private var maxTemeratureView: UILabel!
 
-    private func setWeather(info: WeatherService.WeatherInfo) {
+    private func setWeather(info: WeatherInfo) {
         minTemeratureView.text = "\(info.min_temperature)"
         maxTemeratureView.text = "\(info.max_temperature)"
 
@@ -25,8 +25,7 @@ class MainViewController: UIViewController {
     }
 
     private func reload() {
-        let req = WeatherService.GetWeatherListRequest(areas: ["Tokyo"], date: Date.now)
-        switch (Result { try WeatherService().getWeatherList(req: req) }) {
+        switch (Result { try WeatherService().getWeatherList(GetWeatherListRequest(areas: ["Tokyo"], date: Date.now)) }) {
         case .success(let weatherList):
             let weather = weatherList.first!
             Logger().debug("Area: \(weather.area), Date: \(weather.info.date), Condition: \(weather.info.weather_condition.rawValue), Temperature: \(weather.info.min_temperature) C - \(weather.info.max_temperature) C")
