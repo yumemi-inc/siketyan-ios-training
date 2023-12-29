@@ -1,15 +1,8 @@
-//
-//  ViewController.swift
-//  TrainingApp
-//
-//  Created by Naoki Ikeguchi on 2023/11/04.
-//
-
 import OSLog
 import UIKit
 import YumemiWeather
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     @IBOutlet private var weatherImageView: UIImageView!
     @IBOutlet private var minTemeratureView: UILabel!
     @IBOutlet private var maxTemeratureView: UILabel!
@@ -53,11 +46,6 @@ class ViewController: UIViewController {
 
             present(alert, animated: true)
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func onReloadButtonClick() {
