@@ -18,9 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5f-Eg-l3B">
-                                <rect key="frame" x="98" y="317" width="197" height="218"/>
+                                <rect key="frame" x="98.333333333333329" y="317.33333333333331" width="196.33333333333337" height="217.33333333333331"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dyq-dx-D6d">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dyq-dx-D6d">
                                         <rect key="frame" x="0.0" y="0.0" width="196.33333333333334" height="196.33333333333334"/>
                                         <constraints>
                                             <constraint firstAttribute="height" secondItem="Dyq-dx-D6d" secondAttribute="width" multiplier="1:1" id="msV-GN-jhC"/>
@@ -62,6 +62,9 @@
                                 <rect key="frame" x="207.33333333333334" y="614.66666666666663" width="76.333333333333343" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Reload"/>
+                                <connections>
+                                    <action selector="onReloadButtonClick" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="rRI-G4-D3f"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -76,6 +79,9 @@
                             <constraint firstItem="y5f-Eg-l3B" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="uYY-Sw-ej5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="weatherImageView" destination="Dyq-dx-D6d" id="ug1-gD-Fnk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
