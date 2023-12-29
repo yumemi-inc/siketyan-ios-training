@@ -24,13 +24,13 @@ class ViewController: UIViewController {
 
         switch weather {
         case "sunny":
-            weatherImageView.image = #imageLiteral(resourceName: "Sunny")
+            weatherImageView.image = UIImage(resource: .sunny)
             weatherImageView.tintColor = .red
         case "cloudy":
-            weatherImageView.image = #imageLiteral(resourceName: "Cloudy")
+            weatherImageView.image = UIImage(resource: .cloudy)
             weatherImageView.tintColor = .gray
         case "rainy":
-            weatherImageView.image = #imageLiteral(resourceName: "Rainy")
+            weatherImageView.image = UIImage(resource: .rainy)
             weatherImageView.tintColor = .blue
         default:
             Logger().error("Unknown weather condition.")
